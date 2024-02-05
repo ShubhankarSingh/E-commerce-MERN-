@@ -33,8 +33,9 @@ const Navbar = () => {
                         </li>
                         {/* <li className="nav-item"><Link className="nav-link" aria-current="page" to="/mobile">Mobile</Link></li> */}
                     </ul>
+                    
                     {localStorage.getItem('token') && <Link className="btn btn-light btn-sm mx-1" to="/addProduct" role="button">Add Product</Link>}
-                    <Link className="btn btn-light btn-sm" to="/cart" role="button">Cart</Link>
+                    {localStorage.getItem('token') && <Link className="btn btn-light btn-sm" to="/cart" role="button">Cart</Link>}
 
                     {!localStorage.getItem('token') ?  <form action="" className="d-flex mx-2">
                     <Link className="btn btn-light btn-sm mx-1" to="/login" role="button">Login</Link>

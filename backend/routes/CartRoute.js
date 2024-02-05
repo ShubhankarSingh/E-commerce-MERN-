@@ -23,11 +23,13 @@ router.post("/addtoCart/:productId", fetchuser, async(req, res)=>{
         const productId = req.params.productId;
 
         const product = await Product.findById(productId);
+        const name = product.name;
         const quantity = 1;
         const itemPrice = product.price;
 
         const cartItem = {
             product: productId,
+            name,
             quantity,
             itemPrice,
         };
@@ -82,11 +84,6 @@ router.put("/:cartId/:itemId/updateQuantity/:quantity", fetchuser, async (req, r
         const itemId = req.params.itemId;
         const updatedQuantity = req.params.quantity;
 
-        console.log("Quantity is: "+ updatedQuantity)
-        console.log("Cart id : "+ cartId)
-        console.log("item Id : "+ itemId)
-
-        //const cart = await Cart.findById(cartId);
 
         const cart = await Cart.findOneAndUpdate(
             { _id: cartId, "products.product": itemId }, // Find the cart with the given ID and matching product ID

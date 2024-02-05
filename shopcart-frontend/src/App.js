@@ -14,6 +14,8 @@ import Appliances from './components/categories/Appliances';
 import Furniture from './components/categories/Furniture';
 import ProductDescription from './components/product/ProductDescription';
 import AddReview from './components/product/AddReview';
+import Success from './components/payment/Success';
+import Cancel from './components/payment/Cancel';
 import UserState from './context/user/UserState';
 
 const App = () => {
@@ -37,6 +39,8 @@ const App = () => {
             <Route exact path="/addProduct" element={<AddProduct/>} />
             <Route exact path="/product-description/:id" element={<ProductDescription/>} />
             <Route exact path="/product-description/:id/addReview" element={<AddReview/>} />
+            <Route exact path='/payment/success' element={<Success/>}/>
+            <Route exact path='/payment/cancel' element={<Cancel/>}/>
           </Routes>
         </div>
       </Router>
