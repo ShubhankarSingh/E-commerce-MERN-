@@ -8,7 +8,6 @@ const UserState = (props) => {
 
     const [user, setUser] = useState([]);
 
-
     const getUser = async () =>{
         const response = await fetch(`${host}/api/user/getuser/`,{
             method: 'GET',

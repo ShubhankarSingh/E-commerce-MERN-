@@ -14,16 +14,19 @@ import Appliances from './components/categories/Appliances';
 import Furniture from './components/categories/Furniture';
 import ProductDescription from './components/product/ProductDescription';
 import AddReview from './components/product/AddReview';
-import Success from './components/payment/Success';
-import Cancel from './components/payment/Cancel';
+import Success from './components/order/Success';
+import Cancel from './components/order/Cancel';
 import UserState from './context/user/UserState';
+import Orders from './components/order/Orders';
+import OrderState from './context/orders/OrderState';
 
 const App = () => {
   return (
     <div className="App">
     <ProductState>
     <UserState>
-    <CartState>      
+    <CartState> 
+    <OrderState>   
     <Router>
         <Navbar/>
         <div className='container'>
@@ -37,6 +40,7 @@ const App = () => {
             <Route exact path="/signup" element={<Signup/>} />
             <Route exact path="/cart" element={<Cart/>} />
             <Route exact path="/addProduct" element={<AddProduct/>} />
+            <Route exact path="/orders" element={<Orders/>} />
             <Route exact path="/product-description/:id" element={<ProductDescription/>} />
             <Route exact path="/product-description/:id/addReview" element={<AddReview/>} />
             <Route exact path='/payment/success' element={<Success/>}/>
@@ -44,6 +48,7 @@ const App = () => {
           </Routes>
         </div>
       </Router>
+      </OrderState> 
       </CartState>
       </UserState>
     </ProductState>

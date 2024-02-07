@@ -7,6 +7,7 @@ const OrderItemSchema = new mongoose.Schema({
         ref: 'Product', // Reference to the Product model
         required: true
     },
+    name: String,
     quantity: {
         type: Number,
         required: true

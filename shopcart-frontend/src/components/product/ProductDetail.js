@@ -74,11 +74,10 @@ const ProductDetail = (props) => {
             <div className="card my-3">
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
-                    <img src={imageSrc} alt={name} style={{ width: "100%", height: "auto" }} />
+                    <img src={imageSrc} alt={name} style={{ width: "250px", height: "180px" }} />
                     <p className="card-text">{brand} </p>
-                    <p className="card-text">{description}</p>
-                    <p className="card-text">{price}</p>
-                    {/*<button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleClick}>{buttonText}</button> */}
+                    {/* <p className="card-text">{description && (description.length > 50 ? `${description.slice(0, 50)}...` : description)}</p> */}
+                    <p className="card-text">₹ {price}</p>
                     <button type="button" className="btn btn-outline-secondary btn-sm mx-2" onClick={handleView}>View</button>
                     <button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleAddToCart}>
                         {isInCart ? "Go to Cart" : "Add to Cart"}

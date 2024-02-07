@@ -7,6 +7,7 @@ const fetchuser = require('../middleware/fetchuser');
 
 router.post("/addtoCart/:productId", fetchuser, async(req, res)=>{
     try{
+        
         // check if the user has an existing cart
         let cart = await Cart.findOne({user:req.user.id});
         console.log("Cart :" + cart);
@@ -135,6 +136,32 @@ router.delete("/:cartId/removeFromCart/:productId", fetchuser, async (req, res)=
         await cart.save();
         
         res.json({ message: 'Item removed from card successfully' });
+    }catch(error){
+        console.log(error.message)
+        res.status(500).send("Internal Server Error");
+    }
+
+});
+
+
+// DELETE route to delete the entire cart instance once order is successful.
+router.delete("/deleteCart/:cartId", fetchuser, async(req, res)=>{
+
+    console.log("Inside delete cart");
+    try{
+
+        const cartId = req.params.cartId;
+
+        await Cart.findByIdAndDelete(cartId)
+        .then(deletedCart =>{
+            console.log("Deleted document:", deletedCart);
+        })
+        .catch(err => {
+            console.error(err);
+            throw err;
+        });
+
+        res.status(200).json({message: 'Cart deleted successfully' })
     }catch(error){
         console.log(error.message)
         res.status(500).send("Internal Server Error");
