@@ -1,0 +1,25 @@
+a{
+    text-decoration: none; /* Remove underline */
+    cursor: pointer;
+}
+
+.card {
+    box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
+}
+
+.card img{
+    height: 220px;
+    width: auto;
+}
+
+.card .btn{
+    background-color: rgb(255, 185, 55);
+    padding: 8px;
+    border-radius: 0;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+
+

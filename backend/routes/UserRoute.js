@@ -26,7 +26,6 @@ router.post("/createuser", [
         return res.status(400).json({error: result.array()})
     }
 
-
     // check if user exists
     try{
         let user = await User.findOne({email: req.body.email});
@@ -43,14 +42,9 @@ router.post("/createuser", [
             password: secPass
         })
 
-        const data = {
-            user:{
-                id: user.id
-            }
-        }
-        const authtoken = jwt.sign(data, JWT_SECRET)
+        await user.save();
         
-        res.json({authtoken})
+        res.status(200).json({ message: "User Account Created" });
     }catch(error){
         console.log(error.message)
         res.status(500).send("Some error occured");

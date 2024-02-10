@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user/userContext";
 import { CartContext } from "../../context/cart/cartcontext";
+import "../../styles/css/products/product.css"
 
 const ProductDetail = (props) => {
     const navigate = useNavigate();
@@ -71,19 +72,17 @@ const ProductDetail = (props) => {
 
     return (
         <div className="col-md-3">
-            <div className="card my-3">
+            <a className="card my-3" onClick={handleView}>
+                <img src={imageSrc} alt={name} />
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
-                    <img src={imageSrc} alt={name} style={{ width: "250px", height: "180px" }} />
-                    <p className="card-text">{brand} </p>
-                    {/* <p className="card-text">{description && (description.length > 50 ? `${description.slice(0, 50)}...` : description)}</p> */}
-                    <p className="card-text">₹ {price}</p>
-                    <button type="button" className="btn btn-outline-secondary btn-sm mx-2" onClick={handleView}>View</button>
-                    <button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleAddToCart}>
-                        {isInCart ? "Go to Cart" : "Add to Cart"}
+                    <p className="card-text">{brand}</p>
+                    <p className="card-text">₹{price}</p>
+                    <button type="button" className="btn btn-outline-secondary btn-sm w-100" onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}>
+                        {isInCart ? "GO TO CART" : "ADD TO CART"}
                     </button>
                 </div>
-            </div>
+            </a>
         </div>
     );
 };

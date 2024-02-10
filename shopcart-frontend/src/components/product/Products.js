@@ -20,7 +20,6 @@ const Products = () => {
     
     return (
         <div className='row my-3'>
-            <h2>Products</h2>
             <div className='container'>
                 {allProducts.length === 0 && <div>Loading...</div>}
             </div>

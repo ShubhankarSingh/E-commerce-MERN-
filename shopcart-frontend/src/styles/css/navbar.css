@@ -1,0 +1,21 @@
+#app-navbar nav {
+    background-color: rgb(24, 24, 24);
+    padding: 3px 120px;
+  }
+
+.navbar-custom {
+    background-color: #000000; 
+}
+
+.btn-outline-light:hover {
+  background-color: transparent !important;
+}
+
+.search-button{
+  border-radius: 0;
+  border-color: white;
+}
+
+.search-button:hover{
+  background: none;
+}
