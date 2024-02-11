@@ -21,10 +21,6 @@ const Cart = (props) => {
     }
 
 
-    // fetchedCart.products.map(product =>{
-    //     console.log("Product: "+ product.product);
-    // })
-
     const makePayment = async() =>{
         const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -53,34 +49,26 @@ const Cart = (props) => {
 
     return (
         <div className="row my-3">
-            <div className="container">
-                {(cartItems.length === 0 ) && 
-                    <div>
-                    <div className="col-md-12">
-                        <div className="card my-3">
-                            <div className="card-body">
-                            <div className="row">
-                                <div className="className col">
-                                    <img src={empty} alt="empty" style={{ width: "200px", height: "150px" }} />
+            {(cartItems.length === 0 ) && 
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="card my-3">
+                                <div className="card-body d-flex justify-content-center align-items-center">
+                                    <div className="text-center">
+                                        <img src={empty} alt="empty" style={{ width: "200px", height: "150px" }} />
+                                        <div className="my-2">
+                                            <p style={{ fontSize: "18px", fontWeight: 'bold' }}>Your cart is empty!</p>
+                                            <p style={{ fontSize: "13px" }}>Add items to it now.</p>
+                                        </div>
+                                        <button type="button" className="btn btn-primary btn-sm" onClick={handleClick}>Shop now</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row my-2">
-                                <div className="className col">
-                                    <p style={{ fontSize: "18px", fontWeight: 'bold' }}>You cart is empty!</p>
-                                    <p style={{ fontSize: "13px" }}>Add items to it now.</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="className col">
-                                    <button type="button" className="btn btn-primary btn-sm" onClick={handleClick}>Shop now</button>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                }
-            </div>
+                </div>
+            }
             <div className="col-md-8">
                 {cartItems.map((cartItem, index) => (
                     <CartDetail
@@ -93,7 +81,7 @@ const Cart = (props) => {
             </div>
             {cartItems.length != 0  &&
             <div className="col-md-4">
-                <div className="card my-3">
+                <div className="card cart-card my-3">
                     <div className="card-body">
                         <h5 style={{ fontSize: "15px" }}>PRICE DETAILS</h5>
                         <hr />

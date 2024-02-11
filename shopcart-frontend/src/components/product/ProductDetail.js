@@ -1,31 +1,28 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user/userContext";
-import { CartContext } from "../../context/cart/cartcontext";
 import "../../styles/css/products/product.css"
 
 const ProductDetail = (props) => {
     const navigate = useNavigate();
     const { item, addToCart } = props;
-    const { name, description, brand, price, _id } = item;
+    const { name, brand, price, _id } = item;
 
-    let currUser = null;
+    // let currUser = null;
 
-    const context = useContext(UserContext);
-    const {user, getUser} = context;
+    // const context = useContext(UserContext);
+    // const {user, getUser} = context;
 
     const [imageSrc, setImageSrc] = useState("");
 
-    const cartContext = useContext(CartContext);
-    const { cartItems } = cartContext;
 
-    if(localStorage.getItem('token')){
-        currUser = user;
-    }
+    // if(localStorage.getItem('token')){
+    //     currUser = user;
+    // }
 
     useEffect(() => {
 
-        {localStorage.getItem('token') && getUser()}
+        // {localStorage.getItem('token') && getUser()}
         
         const fetchImage = async () => {
             try {
@@ -51,7 +48,7 @@ const ProductDetail = (props) => {
         return localStorage.getItem('token') ? true : false;
     };
 
-    const isInCart = cartItems.some((cartItem) => cartItem.product === _id);
+    const isInCart = props.cartItems.some((cartItem) => cartItem.product === _id);
 
     const handleAddToCart = async (event) => {
         if (!checkLoginStatus()) {
@@ -67,12 +64,13 @@ const ProductDetail = (props) => {
     };
 
     const handleView = () =>{
-        navigate(`/product-description/${_id}`, { state: { productDetails: item, imageSrc: imageSrc, currUser:currUser }});
+        navigate(`/product-description/${_id}`, { state: { productDetails: item, imageSrc: imageSrc, currUser:props.currUser }});
+        window.location.reload();
     }
 
     return (
         <div className="col-md-3">
-            <a className="card my-3" onClick={handleView}>
+            <a className="card product-card my-3" onClick={handleView}>
                 <img src={imageSrc} alt={name} />
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>

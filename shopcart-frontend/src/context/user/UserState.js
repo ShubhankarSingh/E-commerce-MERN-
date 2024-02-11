@@ -17,7 +17,7 @@ const UserState = (props) => {
         });
 
         const json = await response.json();
-        console.log("JSOn user: "+ json)
+        console.log("Json user: "+ json)
         setUser(json);
     };
 

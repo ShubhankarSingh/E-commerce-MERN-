@@ -51,6 +51,8 @@ router.post("/addtoCart/:productId", fetchuser, async(req, res)=>{
 
 });
 
+
+// GET ROUTE to Fetch cart items
 router.get("/", fetchuser, async(req, res)=>{
     try{
 

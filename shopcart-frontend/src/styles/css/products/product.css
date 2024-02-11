@@ -3,16 +3,16 @@ a{
     cursor: pointer;
 }
 
-.card {
+.product-card {
     box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
 }
 
-.card img{
+.product-card img{
     height: 220px;
     width: auto;
 }
 
-.card .btn{
+.product-card .btn{
     background-color: rgb(255, 185, 55);
     padding: 8px;
     border-radius: 0;

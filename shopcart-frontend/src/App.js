@@ -21,6 +21,8 @@ import Orders from './components/order/Orders';
 import OrderState from './context/orders/OrderState';
 import Footer from './footer';
 import Alert from './Alert';
+import Products from './components/product/Products';
+
 import { UserContext } from './context/user/userContext';
 
 const App = () => {
@@ -35,26 +37,20 @@ const AppContent = () => {
   const location = useLocation();
   const [alert, setAlert] = useState(null);
 
-  // let currUser = null;
+  const userContext = useContext(UserContext);
+  const {user, getUser} = userContext;
 
-  // const userContext = useContext(UserContext);
-  // const {user, getUser} = userContext;
+  //const [currUser, setCurrUser] = useState(null);
 
-  // if(localStorage.getItem('token')){
-  //   currUser = user;
-  // }
-
-  // useEffect(()=>{
-
-  //     try {
-  //       {localStorage.getItem('token') && getUser()} // Fetch user details
-  //     } catch (error) {
-  //       console.error("Error fetching user:", error);
-  //     }  
-
-  // },[])
-
-  // console.log("User is: " + user);
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (localStorage.getItem('token')) {
+        await getUser(); // Fetch user details
+        //setCurrUser(user); // Update currUser after fetching user details
+      }
+    };
+    fetchUser();
+  }, []);
 
   function showAlert(message, type){
     setAlert({
@@ -66,11 +62,12 @@ const AppContent = () => {
     }, 1500);
   }
 
-
   // Function to determine if the current route is a login/signup page
   const isLoginOrSignupPage = () => {
     return location.pathname === '/login' || location.pathname === '/signup';
   };
+
+  console.log("Curr user is: "+ user);
 
   return (
     <div className="App">
@@ -78,15 +75,16 @@ const AppContent = () => {
         <UserState>
           <CartState>
             <OrderState>
-              <Navbar/>
+              <Navbar currUser={user}/>
               <Alert alert={alert}/>
               <div className="container">
                 <Routes>
-                  <Route exact path="/" element={<Home />} />
-                  <Route exact path="/mobile" element={<Mobile />} />
-                  <Route exact path="/laptop" element={<Laptop />} />
-                  <Route exact path="/appliances" element={<Appliances />} />
-                  <Route exact path="/furniture" element={<Furniture />} />
+                  {/* <Route exact path="/" element={<Home />} /> */}
+                  <Route exact path="/" element={<Products currUser={user}/>} />
+                  <Route exact path="/mobile" element={<Mobile currUser={user}/>} />
+                  <Route exact path="/laptop" element={<Laptop currUser={user}/>} />
+                  <Route exact path="/appliances" element={<Appliances currUser={user}/>} />
+                  <Route exact path="/furniture" element={<Furniture currUser={user}/>} />
                   <Route exact path="/login" element={<Login showAlert={showAlert}/>} />
                   <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} />
                   <Route exact path="/cart" element={<Cart />} />

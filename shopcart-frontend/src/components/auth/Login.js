@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import loginImage from "./login-image.jpg";
 import "../../styles/css/auth.css";
 
+
 const Login = (props) => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState({});
     const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
+
 
     useEffect(() => {
         // Apply custom body class when component mounts
@@ -49,6 +51,7 @@ const Login = (props) => {
             if (json.success) {
                 localStorage.setItem("token", json.authtoken);
                 navigate("/");
+                window.location.reload();
             } else {
                 setLoginError(true);
                 setTimeout(() => {

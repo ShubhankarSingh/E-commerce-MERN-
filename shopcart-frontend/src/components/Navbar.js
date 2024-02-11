@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import {Link, useNavigate} from "react-router-dom";
-import { UserContext } from "../context/user/userContext";
 
 import '../styles/css/navbar.css'
 
@@ -8,12 +7,10 @@ const Navbar = (props) => {
 
     const navigate = useNavigate();
 
-    const userContext = useContext(UserContext);
-    const {user, getUser} = userContext;
-
     const handleLogout = () =>{
         localStorage.removeItem('token');
         navigate('login');
+        window.location.reload();
     }
 
 
@@ -59,11 +56,11 @@ const Navbar = (props) => {
                         {localStorage.getItem('token') &&
                         <Link className="nav-link dropdown-toggle text-light" to="#" role="button" 
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            User
+                            {props.currUser.name}
                         </Link>}
                         <ul className="dropdown-menu">
                             <Link className="dropdown-item" to="/orders">Orders</Link>
-                            <button onClick={handleLogout} className="btn btn-light btn-sm mx-1 border-0 bg-transparent text-dark">Logout</button>
+                            <button onClick={handleLogout} className="btn btn-light btn-sm mx-1 border-0 bg-transparent text-dark dropdown-item">Logout</button>
                         </ul>
                     </li>
 

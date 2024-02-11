@@ -30,7 +30,6 @@ const ProductDescription = () =>{
         navigate(`addReview/`, {state: {pid: productDetails._id}});
       }
 
-      
     return (
         <div>
             {productDetails && (

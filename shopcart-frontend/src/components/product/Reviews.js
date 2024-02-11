@@ -8,7 +8,7 @@ const Reviews = (props) =>{
     const navigate = useNavigate();
     let currUserId = null;
 
-    if(currUser){
+    if(localStorage.getItem('token') && currUser){
        currUserId = currUser._id.toString()
     }
     

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { ProductContext } from "../../context/products/productContext";
 import { CartContext } from "../../context/cart/cartcontext";
+import "../../styles/css/products/cart.css"
 
 const ProductDetail = (props) => {
 
@@ -64,9 +65,9 @@ const ProductDetail = (props) => {
  
     return (     
         <div className="col">
-            <div className="card my-3">
+            <div className="card cart-card my-3">
                 <div className="row">
-                    <div className="col-md-4 my-3">
+                    <div className="col-md-4">
                         <img src={imageSrc} alt={productDetails.name} style={{ width: "200px", height: "150px" }} />
                     </div>
                     <div className="col-md-4">
@@ -74,13 +75,17 @@ const ProductDetail = (props) => {
                         <h5 className="card-title" style={{ fontSize: "16px" }}>{productDetails.name}</h5>
                         <p className="card-text">{productDetails.brand}</p>
                         <p className="card-text">₹ {cartItem.itemPrice}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 button-class">
                         <button type="button" className="btn btn-outline-danger btn-sm mx-2"
                             name={productDetails.name} onClick={handleRemoveFromCart}>Remove
                         </button>
                         <button type="button" className="btn btn-outline-secondary btn-sm mx-1" onClick={handleDecrementQuantity}>-</button>
                             {quantity}
                         <button type="button" className="btn btn-outline-secondary btn-sm mx-1" onClick={handleIncrementQuantity}>+</button>
-                        </div>
                     </div>
                 </div>
             </div>

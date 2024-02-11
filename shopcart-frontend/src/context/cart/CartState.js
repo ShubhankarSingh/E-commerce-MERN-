@@ -25,7 +25,6 @@ const CartState = (props) => {
 
         setFetchedCart(json.cart);
         setCartItems(json.products);
-        
     }
 
 

@@ -1,21 +1,27 @@
 import React, { useContext, useEffect, lazy, Suspense } from "react";
 import { ProductContext } from "../../context/products/productContext";
 import { CartContext } from "../../context/cart/cartcontext";
-
+import { UserContext } from "../../context/user/userContext";
 
 const ProductDetail = lazy(() => import("../product/ProductDetail"));
 
-const Appliances = () => {
+const Appliances = (props) => {
 
     const context = useContext(ProductContext);
     const {appliance, getAppliances} = context;
 
     const cartContext = useContext(CartContext);
-    const {addToCart} = cartContext;
+    const {addToCart, fetchCart, cartItems} = cartContext;
 
-    useEffect(()=>{
+    // const userContext = useContext(UserContext);
+    // const {user, getUser} = userContext;
+
+    useEffect(() => {
         getAppliances();
-    },[]);
+        if (localStorage.getItem('token')){
+            fetchCart();
+        }
+    }, []);
 
     return (
         <div className='row my-3'>
@@ -29,6 +35,8 @@ const Appliances = () => {
                         key={index}
                         item={applianceItem}
                         addToCart={addToCart}
+                        cartItems={cartItems} 
+                        currUser={props.currUser}
                         />
                 }
             )}
