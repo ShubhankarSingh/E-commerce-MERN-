@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require("../models/UserModel");
+const UserProfile = require("../models/UserProfileModel");
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
@@ -42,7 +43,12 @@ router.post("/createuser", [
             password: secPass
         })
 
+        let userProfile = await UserProfile.create({
+            user: user
+        });
+
         await user.save();
+        await userProfile.save();
         
         res.status(200).json({ message: "User Account Created" });
     }catch(error){
@@ -104,7 +110,7 @@ router.post('/login', [
 
 router.get("/getuser/", fetchuser, async (req, res) =>{
     try{
-        userId = req.user.id;
+        const userId = req.user.id;
         const user = await User.findById(userId).select("-password");
         res.send(user);
     }catch(error){

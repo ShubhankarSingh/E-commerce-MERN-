@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import orderSuccess from './order_success.jpg'
 
 const Success = (props) => {
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const cartId = params.get("orderId");
-  const host = "http://localhost:5000"
+  const host = "http://localhost:5000";
+  const navigate = useNavigate();
 
   useEffect(()=>{
 
@@ -41,9 +43,38 @@ const Success = (props) => {
 
   },[cartId]);
 
+  const handleClick = () =>{
+    navigate("/orders"); 
+  }
 
   return (
-    <div>Order Placed Successfully!</div>
+    <>
+    <div className="container">
+        <div className="row">
+            <div className="col-md-12">
+                <div className="card my-3">
+                    <div className="card-body d-flex justify-content-center align-items-center">
+                        <div className="text-center">
+                          <div className="row">
+                            <div className="col"><p style={{ fontSize: "16px", fontWeight: 'bold' }}>Order Placed Successfully 😍</p></div>
+                          
+                          </div>
+                          <div className="row">
+                          
+                            <div className="col"><img src={orderSuccess} alt="empty" style={{ width: "400px", height: "200px" }}/></div>
+                            
+                          </div>
+                          <div className="row">
+                            
+                            <div className="col"> <button type="button" className="btn btn-primary btn-sm" onClick={handleClick}>My Orders</button></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </>
   )
 }
 

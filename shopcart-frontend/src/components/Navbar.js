@@ -57,9 +57,13 @@ const Navbar = (props) => {
                         <Link className="nav-link dropdown-toggle text-light" to="#" role="button" 
                             data-bs-toggle="dropdown" aria-expanded="false">
                             {props.currUser.name}
-                        </Link>}
+                        </Link>
+                        }
                         <ul className="dropdown-menu">
                             <Link className="dropdown-item" to="/orders">Orders</Link>
+                            <Link className="dropdown-item text-dark" to="#">
+                                Profile
+                            </Link>
                             <button onClick={handleLogout} className="btn btn-light btn-sm mx-1 border-0 bg-transparent text-dark dropdown-item">Logout</button>
                         </ul>
                     </li>

@@ -54,13 +54,17 @@ const ProductDetail = (props) => {
     };
 
     const handleIncrementQuantity = async()=>{
-        updateItemQuantity(fetchedCart._id, cartItem.product, quantity+1);
-        window.location.reload();
+        if(quantity < 5){
+            updateItemQuantity(fetchedCart._id, cartItem.product, quantity+1);
+            window.location.reload();
+        }
     }
 
     const handleDecrementQuantity = async()=>{
-        updateItemQuantity(fetchedCart._id, cartItem.product, quantity-1);
-        window.location.reload();
+        if(quantity > 1){
+            updateItemQuantity(fetchedCart._id, cartItem.product, quantity-1);
+            window.location.reload();
+        }
     }
  
     return (     

@@ -42,15 +42,14 @@ const OrderDetail = (props) =>{
     return(
         <div className="col">
             <div className="card my-3">
-
                 <div className="d-flex flex-row">
-                    <div className="p-2 col-md-2">
-                        <img src={imageSrc} alt={orderedItem.name} style={{ width: "200px", height: "150px" }} />
+                    <div className="col-md-2">
+                        <img src={imageSrc} alt={orderedItem.name} style={{ width: "200px", height: "160px" }} />
                     </div>
                     <div className="p-2 col-md-3">
                         <div className="card-body">
                             <h5 className="card-title" style={{ fontSize: "15px", marginBottom: "0" }}>{orderedItem.name}</h5>
-                            <p className="card-text" style={{ fontSize: "11px", color: "grey", marginBottom: "0" }}>Quantity: {orderedItem.quantity}</p>
+                            <p className="card-text" style={{ fontSize: "12px", color: "grey", marginBottom: "0" }}>Quantity: {orderedItem.quantity}</p>
                         </div>
                     </div>
                     <div className="p-2 col-md-6">

@@ -4,11 +4,13 @@ import CartDetail from "./CartDetail";
 import empty from './empty.webp'
 import { useNavigate } from "react-router-dom";
 import {loadStripe} from '@stripe/stripe-js';
-
+import "../../styles/css/products/cart.css"
 
 const Cart = (props) => {
     const cartContext = useContext(CartContext);
     const { cartItems, fetchCart, fetchedCart, removeFromCart } = cartContext;
+
+    let totalItems = 0;
 
     const navigate = useNavigate();
 
@@ -19,6 +21,10 @@ const Cart = (props) => {
     const handleClick = () =>{
         navigate("/"); 
     }
+
+    cartItems.forEach(item =>{
+        totalItems += item.quantity;
+    })
 
 
     const makePayment = async() =>{
@@ -53,7 +59,7 @@ const Cart = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="card my-3">
+                            <div className="card cart-card my-3">
                                 <div className="card-body d-flex justify-content-center align-items-center">
                                     <div className="text-center">
                                         <img src={empty} alt="empty" style={{ width: "200px", height: "150px" }} />
@@ -85,7 +91,7 @@ const Cart = (props) => {
                     <div className="card-body">
                         <h5 style={{ fontSize: "15px" }}>PRICE DETAILS</h5>
                         <hr />
-                        <p style={{ fontSize: "18px" }}>Items in cart: {cartItems.length}</p>
+                        <p style={{ fontSize: "18px" }}>Items in cart: {totalItems}</p>
                         <p style={{ fontSize: "18px", fontWeight: "bold" }}>Total Amount: ₹{fetchedCart.cartTotalPrice}</p>
                         <button type="button" className="btn btn-success btn-sm mx-1" onClick={makePayment}>Checkout</button>
                     </div>
