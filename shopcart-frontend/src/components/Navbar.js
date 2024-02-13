@@ -61,7 +61,7 @@ const Navbar = (props) => {
                         }
                         <ul className="dropdown-menu">
                             <Link className="dropdown-item" to="/orders">Orders</Link>
-                            <Link className="dropdown-item text-dark" to="#">
+                            <Link className="dropdown-item text-dark" to="/profile">
                                 Profile
                             </Link>
                             <button onClick={handleLogout} className="btn btn-light btn-sm mx-1 border-0 bg-transparent text-dark dropdown-item">Logout</button>
