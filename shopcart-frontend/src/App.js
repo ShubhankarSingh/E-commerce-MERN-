@@ -26,6 +26,7 @@ import Products from './components/product/Products';
 import { UserContext } from './context/user/userContext';
 import UpdateProfile from './components/auth/UpdateProfile';
 import Profile from './components/auth/Profile';
+import SearchResults from './components/SearchResults';
 
 const App = () => {
   return (
@@ -84,14 +85,15 @@ const AppContent = () => {
                   {/* <Route exact path="/" element={<Home />} /> */}
                   <Route exact path="/login" element={<Login showAlert={showAlert}/>} />
                   <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} />
-                  <Route exact path="/profile" element={<Profile currUser={user}/>} />
-                  <Route exact path="/update" element={<UpdateProfile/>} />
+                  {/* <Route exact path="/profile" element={<Profile currUser={user}/>} /> */}
+                  <Route exact path="/profile" element={<UpdateProfile currUser={user}/>} />
                   <Route exact path="/" element={<Products currUser={user}/>} />
                   <Route exact path="/mobile" element={<Mobile currUser={user}/>} />
                   <Route exact path="/laptop" element={<Laptop currUser={user}/>} />
                   <Route exact path="/appliances" element={<Appliances currUser={user}/>} />
                   <Route exact path="/furniture" element={<Furniture currUser={user}/>} />
-                  <Route exact path="/cart" element={<Cart />} />
+                  <Route exact path="/search-results" element={<SearchResults currUser={user}/>} />
+                  <Route exact path="/cart" element={<Cart currUser={user}/>} />
                   <Route exact path="/addProduct" element={<AddProduct />} />
                   <Route exact path="/orders" element={<Orders />} />
                   <Route exact path="/product-description/:id" element={<ProductDescription />} />

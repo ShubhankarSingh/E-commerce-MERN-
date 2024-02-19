@@ -2,7 +2,7 @@ import React from 'react'
 
 const Cancel = () => {
   return (
-    <div>Payment Failed</div>
+    <div>Payment Failed ☹️</div>
   )
 }
 

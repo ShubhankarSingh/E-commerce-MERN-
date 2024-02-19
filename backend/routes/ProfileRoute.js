@@ -11,8 +11,6 @@ router.get("/", fetchuser, async(req, res)=>{
     try{
         let userId = req.user.id;
         let userProfile = await UserProfile.findOne({user: userId});
-
-        
         res.json(userProfile);
 
     }catch(error){
@@ -32,8 +30,6 @@ router.put("/update", fetchuser, async(req, res)=>{
 
         console.log("User Profile: "+ userProfile);
         const {phone, address, city, state, country, pinCode} = req.body;
-
-        console.log("User Profile Details: " + phone + " " + address + " " + state);
 
         if (!userProfile) {
             // Create a new profile if it doesn't exist

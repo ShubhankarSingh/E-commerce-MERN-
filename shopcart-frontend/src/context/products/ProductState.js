@@ -12,7 +12,7 @@ const ProductState = (props) =>{
     const[furniture, setFurniture] = useState([]);
     const[selectedProduct, setSelectedProduct] = useState(null);
     const[reviews, setReviews] = useState([]);
-
+    const [results, setResults] = useState('');
 
     //Get a product using PID 
     const getProduct = async (pid) =>{
@@ -128,9 +128,23 @@ const ProductState = (props) =>{
         }
     };
 
+    const searchProduct = async(query) =>{
+        
+        const response = await fetch(`http://localhost:5000/api/products/search?query=${query}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+
+        const json = await response.json();
+        return json;
+    }
+
     return (
         <ProductContext.Provider value={{products, getProduct, mobile, getMobile, laptop, getLaptop , 
-        appliance, getAppliances, furniture, getFurniture ,allProducts, getAllProducts, addReview, reviews, getReviews, selectedProduct, setSelectedProduct}}>
+        appliance, getAppliances, furniture, getFurniture ,allProducts, getAllProducts, addReview, 
+        reviews, getReviews, selectedProduct, setSelectedProduct, results, searchProduct}}>
             {props.children}
         </ProductContext.Provider>
     )

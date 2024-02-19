@@ -20,7 +20,6 @@ const Products = (props) => {
         }
     }, []);
 
-    
 
     return (
         <div className='row my-3'>

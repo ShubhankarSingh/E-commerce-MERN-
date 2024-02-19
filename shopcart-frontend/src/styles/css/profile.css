@@ -1,0 +1,16 @@
+.profile .btn{
+    background-color: rgb(255, 185, 55);
+    padding: 6px 16px;
+    border-radius: 0;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.profile label{
+    margin-bottom: 3px;
+}
+
+.profile .disabled:hover{
+    cursor: not-allowed;
+}

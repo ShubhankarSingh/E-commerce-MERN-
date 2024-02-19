@@ -70,7 +70,7 @@ router.get('/fetchOrder/:userId', fetchuser, async (req, res) => {
         console.log("Orders: "+ orders);
         
         if (orders.length === 0) {
-            res.json({ orders: [] }); // Send empty array if no orders are found
+            res.json({ orders: null }); // Send empty array if no orders are found
         } else {
             res.json({ orders }); // Send the found orders
         }

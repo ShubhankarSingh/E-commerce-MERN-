@@ -8,13 +8,18 @@ const Profile = (props) =>{
     const navigate = useNavigate();
 
     const handleSubmit = () => {
-        navigate("/update")
+        navigate("/update", {state: {currUser:currUser}});
     }
 
     return(
         <>
-            <div>Hello, {currUser.name}</div>
-            <button onClick={handleSubmit} className="btn btn-primary btn-sm mx-1 text-dark">Update Profile</button>
+            <div className="container profile-section">
+
+                <div>Hello, {currUser.name}</div>
+                <button onClick={handleSubmit} className="btn btn-primary btn-sm mx-1 text-dark">Update Profile</button>
+
+            </div>
+            
         </>
     )
 

@@ -289,4 +289,36 @@ router.delete("/:productId/deletereview/:reviewId", fetchuser, async (req, res)=
 
 });
 
+
+router.get("/search", async(req, res)=>{
+
+    console.log("Inside Search Product");
+    try {
+        const { query } = req.query;
+
+        // Split the query into individual words
+        const words = query.split(' ');
+
+        // Construct an array of regex patterns to match any of the words as whole words
+        const regexPatterns = words.map(word => new RegExp(`\\b${word}\\b`, 'i'));
+
+        // Use $or operator to search for any of the words in the fields
+        const results = await Product.find({
+            $or: [
+                { name: { $in: regexPatterns } },
+                { brand: { $in: regexPatterns } },
+                { category: { $in: regexPatterns } },
+                { description: { $in: regexPatterns } },
+                { about: { $in: regexPatterns } }
+            ]
+        });
+
+        res.json(results);
+    } catch (error) {
+        console.error('Product Search Error:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+
+});
+
 module.exports = router;

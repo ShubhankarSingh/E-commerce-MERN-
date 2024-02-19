@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import orderSuccess from './order_success.jpg'
+import "../../styles/css/common-btn.css"
 
 const Success = (props) => {
 
@@ -64,9 +65,9 @@ const Success = (props) => {
                             <div className="col"><img src={orderSuccess} alt="empty" style={{ width: "400px", height: "200px" }}/></div>
                             
                           </div>
-                          <div className="row">
+                          <div className="row mt-3">
                             
-                            <div className="col"> <button type="button" className="btn btn-primary btn-sm" onClick={handleClick}>My Orders</button></div>
+                            <div className="col"> <button type="button" className="btn btn-primary btn-sm common-btn" onClick={handleClick}>My Orders</button></div>
                           </div>
                         </div>
                     </div>

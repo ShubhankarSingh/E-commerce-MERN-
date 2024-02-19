@@ -1,0 +1,12 @@
+.common-btn{
+    background-color: rgb(255, 185, 55);
+    padding: 6px;
+    border-radius: 0;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.common-btn:hover{
+    background-color: rgb(255, 185, 55);
+}

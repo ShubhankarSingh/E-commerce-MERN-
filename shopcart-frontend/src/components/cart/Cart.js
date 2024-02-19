@@ -10,6 +10,8 @@ const Cart = (props) => {
     const cartContext = useContext(CartContext);
     const { cartItems, fetchCart, fetchedCart, removeFromCart } = cartContext;
 
+    const {currUser} = props;
+
     let totalItems = 0;
 
     const navigate = useNavigate();
@@ -32,6 +34,7 @@ const Cart = (props) => {
 
         const body = {
             cart: fetchedCart,
+            userEmail: currUser.email,
         }
         const headers = {
             "Content-Type":"application/json"

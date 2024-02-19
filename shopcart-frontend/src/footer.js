@@ -33,7 +33,7 @@ const Footer = () => {
               <Link to="#"><FaTwitter /></Link> {/* Use FaTwitter component */}
             </div>
           </div>
-          <p className="copyright my-2">A-plus © 2024</p>
+          <p className="copyright my-2">shopCart © 2024</p>
         </div>
       </footer>
     </div>

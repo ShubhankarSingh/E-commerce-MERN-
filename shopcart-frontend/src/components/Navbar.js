@@ -1,18 +1,30 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
 
 import '../styles/css/navbar.css'
+import { ProductContext } from "../context/products/productContext";
 
 const Navbar = (props) => {
 
     const navigate = useNavigate();
-
+    const [query, setQuery] = useState('');
+    const productContext = useContext(ProductContext);
+    const {results, searchProduct} = productContext;
+    
     const handleLogout = () =>{
         localStorage.removeItem('token');
         navigate('login');
         window.location.reload();
     }
 
+    const handleChange = (event) =>{
+        setQuery(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        navigate(`/search-results?query=${query}`);
+    }
 
     return (
 <div id="app-navbar">
@@ -38,9 +50,9 @@ const Navbar = (props) => {
                     </li>
                 </ul>
 
-                <form method="GET" action="/search" className="d-flex mx-auto">
-                    <input className="form-control me-2" type="search" placeholder="Search for Products, Brand and More" aria-label="Search" name="query" id="search" style={{ minWidth: "730px" }}/>
-                    <button className="btn btn-outline-dark text-light search-button" type="submit">Search</button>
+                <form method="GET" action="/search" className="d-flex mx-auto" onSubmit={handleSubmit}>
+                    <input className="form-control me-2" type="search" value={query} onChange={handleChange} placeholder="Search for Products, Brand and More" aria-label="Search" name="query" id="search" style={{ minWidth: "730px" }}/>
+                    <button className="btn btn-outline-dark text-light search-button" type="submit" >Search</button>
                 </form>
                 
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
