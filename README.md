@@ -19,3 +19,11 @@ Admin: Add/Update Products
 #
 For Admin create a new account, in MongoDB Compass change the user role to admin. Default role is "user".
 Only admins can Add/Update Products.
+
+#
+💳 Stripe Payment Gateway
+#
+Test VISA card details for successfull payment:
+Card Number : 4000003560000123
+Expiry Date: any future date (MM/YY)
+Cvv: any 3 digits
