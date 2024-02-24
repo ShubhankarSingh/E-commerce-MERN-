@@ -16,8 +16,7 @@ An e-commerce store built with MERN stack.
 
 #
 Admin: Add/Update Products
-#
-For Admin create a new account, in MongoDB Compass change the user role to admin. Default role is "user".
+- For Admin create a new account, in MongoDB Compass change the user role to admin. Default role is "user".
 Only admins can Add/Update Products.
 
 #
