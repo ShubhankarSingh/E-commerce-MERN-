@@ -11,6 +11,8 @@ const Navbar = (props) => {
     const productContext = useContext(ProductContext);
     const {results, searchProduct} = productContext;
     
+   
+
     const handleLogout = () =>{
         localStorage.removeItem('token');
         navigate('login');
@@ -56,9 +58,13 @@ const Navbar = (props) => {
                 </form>
                 
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {localStorage.getItem('token') && 
+                {localStorage.getItem('token') && ((props.currUser.role === "user")) &&
                     <li className="nav-item">
                         <Link className="nav-link text-light" to="/cart" role="button">Cart</Link>
+                    </li> }
+                    {localStorage.getItem('token') && ((props.currUser.role === "admin")) &&
+                    <li className="nav-item">
+                        <Link className="nav-link text-light" style={{fontSize: '15px'}} to="/addProduct" role="button">Add Product</Link>
                     </li> }
                 </ul>
 
@@ -72,7 +78,7 @@ const Navbar = (props) => {
                         </Link>
                         }
                         <ul className="dropdown-menu">
-                            <Link className="dropdown-item" to="/orders">Orders</Link>
+                            {localStorage.getItem('token') && ((props.currUser.role === "user")) && <Link className="dropdown-item" to="/orders">Orders</Link>}
                             <Link className="dropdown-item text-dark" to="/profile">
                                 Profile
                             </Link>

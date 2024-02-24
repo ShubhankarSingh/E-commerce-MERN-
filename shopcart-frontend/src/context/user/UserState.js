@@ -6,7 +6,7 @@ const UserState = (props) => {
 
     const host = "http://localhost:5000";
 
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState(['null']);
 
     const getUser = async () =>{
         const response = await fetch(`${host}/api/user/getuser/`,{

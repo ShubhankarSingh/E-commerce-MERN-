@@ -309,7 +309,6 @@ router.get("/search", async(req, res)=>{
                 { brand: { $in: regexPatterns } },
                 { category: { $in: regexPatterns } },
                 { description: { $in: regexPatterns } },
-                { about: { $in: regexPatterns } }
             ]
         });
 

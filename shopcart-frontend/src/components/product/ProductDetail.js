@@ -7,22 +7,11 @@ const ProductDetail = (props) => {
     const navigate = useNavigate();
     const { item, addToCart } = props;
     const { name, brand, price, _id } = item;
-
-    // let currUser = null;
-
-    // const context = useContext(UserContext);
-    // const {user, getUser} = context;
-
     const [imageSrc, setImageSrc] = useState("");
-
-
-    // if(localStorage.getItem('token')){
-    //     currUser = user;
-    // }
 
     useEffect(() => {
 
-        // {localStorage.getItem('token') && getUser()}
+        
         
         const fetchImage = async () => {
             try {
@@ -76,9 +65,13 @@ const ProductDetail = (props) => {
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">{brand}</p>
                     <p className="card-text">₹{price}</p>
-                    <button type="button" className="btn btn-outline-secondary btn-sm w-100" onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}>
-                        {isInCart ? "GO TO CART" : "ADD TO CART"}
-                    </button>
+                    { ( props.currUser.toString() === "null" || props.currUser.role === "user") &&
+                        <button type="button" className="btn btn-outline-secondary btn-sm w-100" onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}>
+                            {isInCart ? "GO TO CART" : "ADD TO CART"}
+                        </button>
+                    }
+                    
+                    {/* if user is not logged in, currUser will be null (string), !!props.currUser will become true*/}
                 </div>
             </a>
         </div>
