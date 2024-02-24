@@ -24,6 +24,6 @@ Only admins can Add/Update Products.
 💳 Stripe Payment Gateway
 #
 Test VISA card details for successfull payment:
--Card Number : 4000003560000123
--Expiry Date: any future date (MM/YY)
--Cvv: any 3 digits
+- Card Number : 4000003560000123
+- Expiry Date: any future date (MM/YY)
+- Cvv: any 3 digits
